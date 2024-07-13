@@ -34,7 +34,7 @@ pipeline {
                     repository: 'maven-releases',
                     credentialsId: 'nexus-credentials',
                     artifacts: [
-                        [artifactId: 'sample-java-webapp', classifier: '', file: 'target/sample-java-webapp.war', type: 'war']
+                        [artifactId: 'sample-java-web-application', classifier: '', file: 'target/sample-java-web-application.war', type: 'war']
                     ]
                 )
             }
@@ -42,7 +42,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("venkateshdocker1/sample-java-webapp:${env.BUILD_ID}")
+                    dockerImage = docker.build("venkateshdocker1/sample-java-web-application:${env.BUILD_ID}")
                 }
             }
         }
